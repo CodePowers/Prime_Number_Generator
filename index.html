@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Prime Number Generator</title>
+    
+    <script type="text/javascript" >
+        
+        function IsPrime(number) {
+            
+        }
+
+        function GetPrimeNumbers(startRange, maxRange, marqueValue) {
+            var start = document.getElementById(startRange).value;
+            var end = document.getElementById(maxRange).value;
+            var primeNumbers = "";
+            if (start.length > 0 && end.length > 0) {
+                for (var i = start; i <= end; i++) {
+                    if (isPrime(i)) {
+                        primeNumbers += i + " ";
+                    } else {
+                    }
+
+                }
+                StartMarquee(primeNumbers);
+            } else {
+                alert('Please enter a valid start and end range.');
+            }
+        }
+        
+        function StartMarquee(primeNumbers) {
+            if (primeNumbers != null) {
+                alert(primeNumbers);
+            }
+            else {
+                document.write("<marquee behavior='scroll' direction='right'>No Prime Numbers listed...</marquee>");
+            }
+        }
+
+        function isPrime(numb) {
+            for (var i = 2; i <= Math.sqrt(numb) ; i++) {
+                if (numb % i == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+    </script>
+</head>
+<body>
+    
+    <div style="padding-right: 15px;">
+        
+        <br/>
+            <br/>
+                <label>Input Numbers:</label>
+            <br/>
+        <br/>
+        
+        <div style="width: 370px;">
+            <label style="padding-right: 125px;">(Min)</label>         <label>(Max)</label>
+            <br/>
+            <input type="text" id="txtStartRange" maxlength="5"/> - <input type="text" id="txtEndRange" maxlength="5"/>
+        </div>
+
+        <br/>
+        <br/>
+
+        <input type="button" id="btnCalculate" onclick="GetPrimeNumbers('txtStartRange', 'txtEndRange', 'marqueValue');" value="Get Prime Numbers" width="120"/> 
+        <br/>
+        <br/>
+
+        <div style="width: 150px;">
+            <label>Prime Numbers:</label>
+            <br />
+            <label id="lblPrimeNumbers" ></label>
+            <marquee id="marqueValue" behavior="scroll" direction="right"></marquee>
+        </div>
+    
+        
+    </div>
+
+</body>
+</html>
